@@ -548,6 +548,73 @@ body.dragging .empty-hint { display: none; }
 /* ===== App Hidden (before auth) ===== */
 .app-hidden { display: none !important; }
 
+/* ===== Auth Divider ===== */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0;
+}
+
+.auth-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--md-outline-variant);
+}
+
+.auth-divider-text {
+  font-size: 12px;
+  color: var(--md-on-surface-variant);
+  white-space: nowrap;
+}
+
+/* ===== Social Login Buttons ===== */
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 20px;
+  border-radius: var(--r-full);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.social-btn-google {
+  background: #fff;
+  color: #3c4043;
+  border: 1.5px solid var(--md-outline-variant);
+  box-shadow: var(--elev-1);
+}
+
+.social-btn-google:hover {
+  background: #f8f9fa;
+  box-shadow: var(--elev-2);
+}
+
+.social-btn-github {
+  background: #24292e;
+  color: #fff;
+  border: 1.5px solid transparent;
+  box-shadow: var(--elev-1);
+}
+
+.social-btn-github:hover {
+  background: #2f363d;
+  box-shadow: var(--elev-2);
+}
+
 /* ===== Mobile Auth ===== */
 @media (max-width: 480px) {
   .auth-card { padding: 24px 20px; }

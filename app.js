@@ -109,6 +109,18 @@ async function handleLogout() {
   // onAuthStateChange가 showAuthScreen() 호출
 }
 
+async function handleSocialLogin(provider) {
+  const { error } = await sb.auth.signInWithOAuth({
+    provider,
+    options: { redirectTo: window.location.origin + window.location.pathname }
+  });
+  if (error) {
+    const errorEl = document.getElementById('auth-error');
+    errorEl.style.color = 'var(--high)';
+    errorEl.textContent = translateAuthError(error.message);
+  }
+}
+
 function translateAuthError(msg) {
   if (msg.includes('Invalid login credentials'))  return '이메일 또는 비밀번호가 올바르지 않습니다.';
   if (msg.includes('User already registered'))    return '이미 가입된 이메일입니다.';
@@ -151,6 +163,10 @@ function setupAuthListeners() {
       icon.textContent = 'visibility';
     }
   });
+
+  // 소셜 로그인
+  document.getElementById('google-btn').addEventListener('click', () => handleSocialLogin('google'));
+  document.getElementById('github-btn').addEventListener('click', () => handleSocialLogin('github'));
 
   // 로그아웃
   document.getElementById('logout-btn').addEventListener('click', handleLogout);
