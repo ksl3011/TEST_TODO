@@ -7,13 +7,16 @@
 
 ## 배포 전 필수: Supabase URL 설정
 
-이메일 인증 링크 클릭 후 올바른 주소로 리다이렉트되려면 Supabase에 배포 URL을 등록해야 합니다.
+이메일 인증 링크 및 **소셜 로그인(Google/GitHub) 리다이렉트**가 올바른 주소로 돌아오려면 반드시 설정해야 합니다.
 
 1. Supabase Dashboard → **Authentication** → **URL Configuration**
-2. **Site URL**: 배포된 주소로 변경 (예: `https://my-todo.netlify.app`)
-3. **Redirect URLs**: 같은 주소 추가 후 **Save**
+2. **Site URL**: 배포된 주소로 변경 (예: `https://ksl3011.github.io/TEST_TODO`)
+3. **Redirect URLs**: 아래 주소를 **모두** 추가 후 **Save**
+   - 배포 URL: `https://ksl3011.github.io/TEST_TODO`
+   - 로컬 테스트 URL: `http://localhost:8765`
 
-> 이 설정을 빠뜨리면 이메일 확인 링크 클릭 시 엉뚱한 주소로 이동합니다.
+> **중요**: 이 설정을 빠뜨리면 소셜 로그인 후 Site URL(기본값 localhost)로 강제 리다이렉트됩니다.  
+> Redirect URLs에 없는 주소는 Supabase가 보안상 거부하고 Site URL로 대체합니다.
 
 ---
 
