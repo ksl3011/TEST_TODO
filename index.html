@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>할일 목록</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 인증 화면 (비로그인 시 표시) -->
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <span class="material-icons-round">task_alt</span>
+        <h2>할일 목록</h2>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab auth-tab-active" data-mode="signin">로그인</button>
+        <button class="auth-tab" data-mode="signup">회원가입</button>
+      </div>
+      <div class="text-field">
+        <span class="material-icons-round text-field-icon">email</span>
+        <input type="email" id="auth-email" placeholder="이메일" autocomplete="email">
+      </div>
+      <div class="text-field">
+        <span class="material-icons-round text-field-icon">lock</span>
+        <input type="password" id="auth-password" placeholder="비밀번호 (6자 이상)" autocomplete="current-password">
+        <button class="pw-toggle" id="pw-toggle" tabindex="-1" type="button">
+          <span class="material-icons-round" id="pw-toggle-icon">visibility</span>
+        </button>
+      </div>
+      <p id="auth-error" class="auth-error"></p>
+      <button id="auth-submit" class="filled-btn auth-submit-btn">
+        <span class="btn-label">로그인</span>
+      </button>
+    </div>
+  </div>
+
+  <header class="top-app-bar">
+    <div class="top-app-bar-row">
+      <span class="material-icons-round app-icon">task_alt</span>
+      <h1 class="app-title">할일 목록</h1>
+      <div class="user-area app-hidden" id="user-area">
+        <span class="user-email" id="user-email"></span>
+        <button class="icon-btn" id="logout-btn" title="로그아웃">
+          <span class="material-icons-round">logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="input-card app-hidden" role="form" aria-label="할일 추가">
+      <div class="text-field">
+        <span class="material-icons-round text-field-icon">edit_note</span>
+        <input type="text" id="todo-input" placeholder="새 할일을 입력하세요" autocomplete="off" aria-label="할일 내용">
+      </div>
+      <div class="input-actions">
+        <div class="chip-group" role="radiogroup" aria-label="우선순위">
+          <button class="chip" data-priority="high" role="radio" aria-checked="false">
+            <span class="material-icons-round">keyboard_double_arrow_up</span>높음
+          </button>
+          <button class="chip chip-active" data-priority="medium" role="radio" aria-checked="true">
+            <span class="material-icons-round">remove</span>중간
+          </button>
+          <button class="chip" data-priority="low" role="radio" aria-checked="false">
+            <span class="material-icons-round">keyboard_double_arrow_down</span>낮음
+          </button>
+        </div>
+        <button id="add-btn" class="filled-btn">
+          <span class="material-icons-round">add</span>
+          <span class="btn-label">추가</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="todo-sections" class="todo-sections app-hidden"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
